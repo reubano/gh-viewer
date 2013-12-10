@@ -1,15 +1,15 @@
-HeaderView = require 'views/header-view'
+NavbarView = require 'views/navbar-view'
 
-class HeaderViewTest extends HeaderView
+class NavbarViewTest extends NavbarView
   renderTimes: 0
 
   render: ->
     super
     @renderTimes += 1
 
-describe 'HeaderView', ->
+describe 'NavbarView', ->
   beforeEach ->
-    @view = new HeaderViewTest
+    @view = new NavbarViewTest
 
   afterEach ->
     @view.dispose()
