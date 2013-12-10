@@ -1,15 +1,15 @@
-NavbarView = require 'views/navbar-view'
+View = require 'views/navbar-view'
 
-class NavbarViewTest extends NavbarView
+class ViewTest extends View
   renderTimes: 0
 
   render: ->
     super
     @renderTimes += 1
 
-describe 'NavbarView', ->
+describe 'View', ->
   beforeEach ->
-    @view = new NavbarViewTest
+    @view = new ViewTest
 
   afterEach ->
     @view.dispose()

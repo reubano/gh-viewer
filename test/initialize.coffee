@@ -1,6 +1,6 @@
 tests = [
-  './views/header-view-test'
-  './views/home-page-view-test'
+  './views/navbar-view-test'
+  './views/home-view-test'
   './views/site-view-test'
 ]
 
