@@ -1,5 +1,13 @@
 exports.config =
   # See http://brunch.io/#documentation for docs.
+  plugins:
+    coffeelint:
+      pattern: /^app\/.*\.coffee$/
+      options:
+        indentation:
+          value: 2
+          level: "error"
+
   files:
     javascripts:
       joinTo:

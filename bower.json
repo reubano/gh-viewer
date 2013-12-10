@@ -8,7 +8,11 @@
     "lodash": "~2.0.0",
     "jquery": "~2.0.2",
     "normalize-css": "~2.1.2",
-    "h5bp-helpers": "~0.1.0"
+    "h5bp-helpers": "~0.1.0",
+    "bootstrap": "~3.0.3",
+    "minilog": "*",
+    "moment": "~2.4.0",
+    "nvd3": "~1.1.14-beta"
   },
   "overrides": {
     "backbone": {
