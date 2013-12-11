@@ -1,5 +1,5 @@
-SiteView = require 'views/site-view'
+View = require 'views/site-view'
 
-describe 'SiteView', ->
+describe 'View', ->
   beforeEach ->
-    @view = new SiteView()
+    @view = new View()
