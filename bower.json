@@ -12,7 +12,11 @@
     "bootstrap": "~3.0.3",
     "minilog": "*",
     "moment": "~2.4.0",
-    "nvd3": "~1.1.14-beta"
+    "nvd3": "~1.1.14-beta",
+    "leaflet-dist": "~0.7.0",
+    "leaflet-providers": "~1.0.1",
+    "Leaflet.awesome-markers": "~2.0.1",
+    "L.GeoSearch": "git://github.com/smeijer/L.GeoSearch.git"
   },
   "overrides": {
     "backbone": {
@@ -21,6 +25,21 @@
         "jquery": "*"
       },
       "main": "backbone.js"
+    },
+    "leaflet-dist": {
+      "name": "leaflet-dist",
+      "dependencies": {},
+      "main": [
+        "leaflet.js",
+        "leaflet.css"]
+    },
+    "L.GeoSearch": {
+      "dependencies": {"leaflet-dist": "*"},
+      "main": [
+        "src/js/l.control.geosearch.js",
+        "src/js/l.geosearch.provider.google.js",
+        "src/css/l.geosearch.css"
+      ]
     }
   }
 }

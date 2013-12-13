@@ -16,8 +16,15 @@ BUT should not have errors
 g.nv-group.nv-series-0 {fill-opacity: 0 !important;}
 g.nv-group.nv-series-1 {overflow: hidden;}
 
+#map {
+  height: 400px;
+  width: 750px;
+  position: relative;
+}
+
 /* Bootstrap CSS */
 body {padding-top: 60px;}
+.leaflet-control-geosearch {display: none;}
 .active-nav {color: #FFFFFF !important;}
 .progress .bar-muted {opacity: 0.2 !important;}
 .progress .bar-transparent {opacity: 0 !important;}

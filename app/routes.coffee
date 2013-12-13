@@ -1,4 +1,7 @@
 module.exports = (match) ->
   console.log 'start router'
   match '', 'home#index'
-  match 'user/:login', 'user#show'
+  match '/:login', 'home#show'
+  match '/followers', 'followers#show'
+  match '/following', 'following#show'
+  match '/repos', 'repos#show'
