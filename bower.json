@@ -1,6 +1,6 @@
 {
-  "name": "example-app",
-  "version": "0.1.0",
+  "name": "gh-viewer",
+  "version": "0.0.1",
   "main": "public/javascripts/app.js",
   "dependencies": {
     "chaplin": "~0.11.3",
