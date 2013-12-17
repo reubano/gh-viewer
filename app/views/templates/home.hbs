@@ -1,24 +1,23 @@
 <div class="col-sm-3">
-  <img class="img-thumbnail" src="{{avatar_url}}" width="200" height="200" alt="">
-
-  <h3>{{name}}</h3>
-
+  <h3>{{login}}</h3>
+  <img class="img-thumbnail" src="{{avatar_url}}" width="285" alt="{{login}}">
+  <br></br>
   <ul class="nav nav-pills nav-stacked">
     <li class="active">
-      <a href="/gists">
+      <a href="/user/{{login}}/gists">
         Gists <span class="badge pull-right">{{public_gists}}</span>
       </a>
     </li>
     <li class="active">
-      <a href="/followers">
+      <a href="/user/{{login}}/followers">
         Followers <span class="badge pull-right">{{followers}}</span>
-      </a>
-    </li>
-    <li class="active">
-      <a href="/following">
-        Following <span class="badge pull-right">{{following}}</span>
       </a>
     </li>
   </ul>
 </div>
-<div class="col-sm-9" id="col9"><div id="map"></div></div>
+<div class="col-sm-9" id="col9">
+  <h3>Location: {{#if location}}{{location}}{{else}}Not available{{/if}}</h3>
+  <div id="map" class="img-responsive">{{#if location}}{{else}}
+    <img class="img-thumbnail" src="http://placehold.it/750x400" alt="{{login}}">{{/if}}
+  </div>
+</div>

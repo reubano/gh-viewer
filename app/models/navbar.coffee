@@ -1,15 +1,13 @@
-Model = require 'models/base/model'
-utils = require 'lib/utils'
+config = require 'config'
 
-module.exports = class Navbar extends Model
-  defaults:
+module.exports = class Navbar extends Chaplin.Model
+  defaults: ->
+    console.log 'setting Navbar defaults'
     items: [
-      {href: '/activity', title: 'Activity', desc: 'View commit activity'},
-      {href: '/contribution', title: 'Contribution', desc: 'View contribution'},
-      {href: '/repos', title: 'Repos', desc: 'View public repos'},
     ]
 
     main: {href: '/', title: 'GitView'}
 
-  initialize: ->
+  initialize: (login) ->
     super
+    console.log 'initializing navbar model'

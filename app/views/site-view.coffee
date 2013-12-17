@@ -9,3 +9,11 @@ module.exports = class SiteView extends View
     navbar: '#navbar'
     content: '#content'
   template: template
+
+  initialize: (options) =>
+    super
+    console.log 'initializing site view'
+
+  render: =>
+    super
+    console.log 'rendering site view'

@@ -9,4 +9,10 @@ module.exports = class NavbarView extends View
   template: template
   listen: 'activeNav mediator': 'render'
 
+  initialize: (options) =>
+    super
+    console.log 'initializing navbar view'
 
+  render: =>
+    super
+    console.log 'rendering navbar view'
