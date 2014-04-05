@@ -4,6 +4,11 @@
   "description": "Package description",
   "version": "0.0.1",
   "homepage": "",
+  "environment": "web",
+  "license": "MIT",
+  "keywords": [
+		"application", "github-api", "brunch", "chaplin", "d3", "nvd3", "bootstrap",
+		"leaflet", "mapping", "geocoding"]
   "repository": {
     "type": "git",
     "url": ""
