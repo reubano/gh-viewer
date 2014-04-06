@@ -6,13 +6,8 @@
   "homepage": "",
   "environment": "web",
   "license": "MIT",
-  "keywords": [
-		"application", "github-api", "brunch", "chaplin", "d3", "nvd3", "bootstrap",
-		"leaflet", "mapping", "geocoding"]
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
+  "keywords": ["application", "github-api", "visualization", "mapping"],
+  "repository": {"type": "git", "url": ""},
   "scripts": {
     "start": "brunch watch --server",
     "test": "brunch test"
