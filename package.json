@@ -6,7 +6,7 @@
   "homepage": "",
   "environment": "web",
   "license": "MIT",
-  "keywords": ["application", "github-api", "visualization", "mapping"],
+  "keywords": ["application", "api-consumer", "visualization", "mapping"],
   "repository": {"type": "git", "url": ""},
   "scripts": {
     "start": "brunch watch --server",
