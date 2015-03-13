@@ -5,9 +5,11 @@
   "version": "0.0.1",
   "homepage": "",
   "environment": "web",
+  "os": ["darwin", "linux", "windows"],
   "license": "MIT",
-  "keywords": ["application", "api-consumer", "visualization", "mapping"],
-  "repository": {"type": "git", "url": ""},
+  "type": "application",
+  "keywords": ["application", "api-consumer", "github-api", "visualization", "mapping"],
+  "repository": {"type": "git", "url": "http://github.com/reubano/gh-viewer"},
   "scripts": {
     "start": "brunch watch --server",
     "test": "brunch test"
