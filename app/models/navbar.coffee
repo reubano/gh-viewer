@@ -3,9 +3,7 @@ config = require 'config'
 module.exports = class Navbar extends Chaplin.Model
   defaults: ->
     console.log 'setting Navbar defaults'
-    items: [
-    ]
-
+    items: []
     main: {href: '/', title: 'GitView'}
 
   initialize: (login) ->

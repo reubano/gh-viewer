@@ -2,7 +2,7 @@ module.exports = class Gist extends Chaplin.Model
   initialize: (options) ->
     super
     console.log "initialize gist model"
-    if @get('id')?
+    if @has 'id'
       files = @get 'files'
       sum = _.pluck(files, 'size').reduce (t, s) -> t + s
       @set size_files: Math.round(sum / 102.4) / 10
