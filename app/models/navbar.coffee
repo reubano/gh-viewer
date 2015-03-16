@@ -1,9 +1,10 @@
 Model = require 'models/base/model'
 config = require 'config'
+utils = require 'lib/utils'
 
 module.exports = class Navbar extends Model
   defaults: ->
-    console.log 'setting Navbar defaults'
+    utils.log 'setting Navbar defaults'
     items: [
       {
         href: "/user/#{config.login}/activity"
@@ -16,4 +17,4 @@ module.exports = class Navbar extends Model
 
   initialize: (login) ->
     super
-    console.log 'initializing navbar model'
+    utils.log 'initializing navbar model'

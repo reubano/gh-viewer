@@ -1,9 +1,10 @@
 Model = require 'models/base/model'
+utils = require 'lib/utils'
 
 module.exports = class Gist extends Model
   initialize: (options) ->
     super
-    console.log "initialize gist model"
+    utils.log "initialize gist model"
     if @has 'id'
       files = @get 'files'
       sum = _.pluck(files, 'size').reduce (t, s) -> t + s

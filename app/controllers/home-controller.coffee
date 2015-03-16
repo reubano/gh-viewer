@@ -11,7 +11,7 @@ module.exports = class HomeController extends Controller
     utils.log 'initialize home-controller'
 
   show: (params) =>
-    console.log 'home controller'
+    utils.log 'home controller'
     # Initialize new user with login from URL params.
     login = params?.login ? config.login
     @model = new Model login: login

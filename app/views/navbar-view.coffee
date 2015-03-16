@@ -1,6 +1,7 @@
 View = require 'views/base/view'
 template = require 'views/templates/navbar'
 mediator = require 'mediator'
+utils = require 'lib/utils'
 
 module.exports = class NavbarView extends View
   autoRender: true
@@ -11,8 +12,8 @@ module.exports = class NavbarView extends View
 
   initialize: (options) =>
     super
-    console.log 'initializing navbar view'
+    utils.log 'initializing navbar view'
 
   render: =>
     super
-    console.log 'rendering navbar view'
+    utils.log 'rendering navbar view'

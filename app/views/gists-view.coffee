@@ -2,6 +2,7 @@ CollectionView = require 'views/base/collection-view'
 template = require 'views/templates/gists'
 View = require 'views/gist-view'
 mediator = require 'mediator'
+utils = require 'lib/utils'
 
 module.exports = class GistsView extends CollectionView
   itemView: View
@@ -13,9 +14,9 @@ module.exports = class GistsView extends CollectionView
 
   initialize: (options) ->
     super
-    console.log 'initializing gists view'
+    utils.log 'initializing gists view'
     mediator.setActive mediator.title
 
   render: =>
     super
-    console.log 'rendering gists view'
+    utils.log 'rendering gists view'

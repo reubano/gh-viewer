@@ -9,8 +9,7 @@ module.exports = class NetworkController extends Controller
     utils.log 'initialize network-controller'
 
   followers: (params) =>
-    console.log 'network controller'
+    utils.log 'network controller'
     @collection = new Followers params.login
-    console.log @collection
     @view = new FollowersView {@collection}
     @collection.fetch()

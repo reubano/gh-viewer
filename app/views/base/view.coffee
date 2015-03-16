@@ -1,5 +1,6 @@
 config = require 'config'
 mediator = require 'mediator'
+utils = require 'lib/utils'
 require 'lib/view-helper' # Just load the view helpers, no return value
 
 module.exports = class View extends Chaplin.View
@@ -15,8 +16,9 @@ module.exports = class View extends Chaplin.View
     _.extend options, config.options
     _.extend options, tmp
     options.provider = new config.srchProviders[options.srchProviderName]()
-    if not location? then return console.log "#{login} has no location"
-    console.log "coding location: #{location} with #{options.srchProviderName}"
+    return unless location?
+
+    # utils.log "coding location: #{location} with #{options.srchProviderName}"
     markers = options.markers
     icon = L.AwesomeMarkers.icon options
     tileProvider = config.tileProviders[options.tileProvider]
@@ -35,7 +37,7 @@ module.exports = class View extends Chaplin.View
         map.fireEvent 'geosearch_showlocation', {Location: coordinates}
 
     @subscribeEvent 'geosearchLocated', (coordinates) ->
-      console.log 'heard geosearchLocated'
+      # utils.log 'heard geosearchLocated'
       [x, y] = [coordinates.Y, coordinates.X]
       map.setView([x, y], options.zoomLevel, false) if not options.center
 

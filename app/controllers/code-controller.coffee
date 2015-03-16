@@ -12,34 +12,34 @@ utils = require 'lib/utils'
 module.exports = class CodeController extends Controller
   activity: (params) =>
     @adjustTitle 'Activity Graph'
-    console.log 'code activity controller'
+    utils.log 'code activity controller'
     comparator = (model) -> model.get 'created_at'
     @collection = new Activity params.login
     @collection.comparator = comparator
-    console.log @collection
+    utils.log @collection
     @view = new ActivityView {@collection}
     @collection.fetch()
 #
 #   contrib: (params) =>
 #     @adjustTitle 'Contribution Graph'
-#     console.log 'code contrib controller'
+#     utils.log 'code contrib controller'
 #     @collection = new Contrib params.login
-#     console.log @collection
+#     utils.log @collection
 #     @view = new ContribView {@collection}
 #     @collection.fetch()
 
   gists: (params) =>
     @adjustTitle 'Gists Graph'
-    console.log 'code gists controller'
+    utils.log 'code gists controller'
     @collection = new Gists params.login
-    console.log @collection
+    utils.log @collection
     @view = new GistsView {@collection}
     @collection.fetch()
 
 #   repos: (params) =>
 #     @adjustTitle 'Repos Graph'
-#     console.log 'code repos controller'
+#     utils.log 'code repos controller'
 #     @collection = new Repos login: 'reubano'
-#     console.log @collection
+#     utils.log @collection
 #     @view = new ReposView {@collection}
 #     @collection.fetch()

@@ -2,6 +2,7 @@ View = require 'views/base/view'
 template = require 'views/templates/home'
 mediator = require 'mediator'
 config = require 'config'
+utils = require 'lib/utils'
 
 module.exports = class HomeView extends View
   autoRender: false
@@ -11,19 +12,15 @@ module.exports = class HomeView extends View
 
   initialize: (options) =>
     super
-    @listenTo @model, 'change', =>
-      console.log "heard model change"
-      @render()
-
-    console.log 'initializing home view'
+    @listenTo @model, 'change', @render
+    utils.log 'initializing home view'
     mediator.setActive mediator.title
 
   render: =>
     super
-    console.log 'rendering home view'
+    utils.log 'rendering home view'
     @on 'addedToDOM', ->
       @$("[data-toggle='tooltip']").tooltip()
-      console.log 'heard addedToDOM'
       @location = @model.get('location')
       @login = @model.get('login')
       options = {providerName: 'openstreetmap'}

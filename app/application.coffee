@@ -1,4 +1,5 @@
 mediator = require 'mediator'
+utils = require 'lib/utils'
 
 # The application object.
 module.exports = class Application extends Chaplin.Application
@@ -12,7 +13,7 @@ module.exports = class Application extends Chaplin.Application
   # Create additional mediator properties.
   initMediator: ->
     # Add additional application-specific properties and methods
-    console.log 'initializing mediator'
+    utils.log 'initializing mediator'
     mediator.active = null
     mediator.user = null
     mediator.googleLoaded = null

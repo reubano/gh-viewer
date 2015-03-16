@@ -14,14 +14,13 @@ module.exports = class ActivityView extends CollectionView
 
   initialize: (options) =>
     super
-    console.log 'initializing activity view'
+    utils.log 'initializing activity view'
     mediator.setActive 'Activity'
 
   render: =>
     super
-    console.log "rendering activity view"
+    utils.log "rendering activity view"
     @listenTo @collection, 'sync', ->
-      console.log "heard collection sync"
       data = Common.convertData @collection
-#       console.log data
+      # utils.log data
       nv.addGraph utils.makeChart data, "#svg"

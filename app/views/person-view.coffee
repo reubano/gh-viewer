@@ -2,6 +2,7 @@ View = require 'views/base/view'
 template = require 'views/templates/person'
 mediator = require 'mediator'
 config = require 'config'
+utils = require 'lib/utils'
 
 module.exports = class PersonView extends View
   autoRender: false
@@ -11,19 +12,14 @@ module.exports = class PersonView extends View
 
   initialize: (options) =>
     super
-    @listenTo @model, 'change', =>
-      console.log "heard model change"
-      @render()
-
+    @listenTo @model, 'change', @render
     @id = @model.get('id')
     @location = @model.get('location')
     @login = @model.get('login')
-    if @id then console.log "initializing person view for id #{@id}"
-    else if @login then console.log "initializing person view for #{@login}"
-    else return
+    return if not (@id or @login)
 
     if not @location
-      console.log "#{@login} has no location"
+      # utils.log "#{@login} has no location"
       @model.fetch()
 
   render: =>
@@ -32,8 +28,8 @@ module.exports = class PersonView extends View
     @login = @model.get 'login'
     @$("[data-toggle='tooltip']").tooltip()
     return if not (mediator.map and @location)
-    console.log "rendering #{@login} person view"
-    console.log @model
+    # utils.log "rendering #{@login} person view"
+
     options =
       icon: 'user'
       markerColor: 'blue'
