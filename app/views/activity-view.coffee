@@ -24,4 +24,4 @@ module.exports = class ActivityView extends CollectionView
       console.log "heard collection sync"
       data = Common.convertData @collection
 #       console.log data
-      nv.addGraph utils.makeChart data, "#horz-svg"
+      nv.addGraph utils.makeChart data, "#svg"
