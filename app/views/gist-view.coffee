@@ -7,8 +7,7 @@ module.exports = class GistView extends View
   template: template
 
   listen:
-#     'all': (event) => console.log "heard #{event}"
-    'addedToParent': => console.log "heard addedToParent"
+    'addedToParent': -> console.log "heard addedToParent"
 
   initialize: (options) =>
     super

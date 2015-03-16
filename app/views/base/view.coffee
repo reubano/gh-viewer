@@ -34,7 +34,7 @@ module.exports = class View extends Chaplin.View
         mediator.publish 'geosearchLocated', coordinates
         map.fireEvent 'geosearch_showlocation', {Location: coordinates}
 
-    @subscribeEvent 'geosearchLocated', (coordinates) =>
+    @subscribeEvent 'geosearchLocated', (coordinates) ->
       console.log 'heard geosearchLocated'
       [x, y] = [coordinates.Y, coordinates.X]
       map.setView([x, y], options.zoomLevel, false) if not options.center
