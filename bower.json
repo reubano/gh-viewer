@@ -24,6 +24,10 @@
       "dependencies": {"lodash": "*", "jquery": "*"},
       "main": "backbone.js"
     },
+    "nvd3": {
+      "dependencies": {"d3": "3.3.5"},
+      "main": ["nv.d3.js", "nv.d3.css"]
+    },
     "leaflet-dist": {
       "name": "leaflet-dist",
       "dependencies": {},
@@ -46,10 +50,6 @@
         "dist/MarkerCluster.css",
         "dist/MarkerCluster.Default.css"
       ]
-    },
-    "nvd3": {
-      "dependencies": {"d3": "3.3.5"},
-      "main": ["nv.d3.js", "nv.d3.css"]
     }
   }
 }
