@@ -13,7 +13,6 @@ window.onLoadGoogleApiCallback = ->
 $ ->
   console.log 'initializing app'
   new Application {
-    title: 'Github user repo viewer'
     controllerSuffix: '-controller'
     routes
   }

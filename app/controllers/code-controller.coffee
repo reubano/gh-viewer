@@ -10,6 +10,7 @@ GistsView = require 'views/gists-view'
 
 module.exports = class CodeController extends Controller
   activity: (params) =>
+    @adjustTitle 'Activity Graph'
     console.log 'code activity controller'
     comparator = (model) -> model.get 'created_at'
     @collection = new Activity params.login
@@ -19,6 +20,7 @@ module.exports = class CodeController extends Controller
     @collection.fetch()
 #
 #   contrib: (params) =>
+#     @adjustTitle 'Contribution Graph'
 #     console.log 'code contrib controller'
 #     @collection = new Contrib params.login
 #     console.log @collection
@@ -26,6 +28,7 @@ module.exports = class CodeController extends Controller
 #     @collection.fetch()
 
   gists: (params) =>
+    @adjustTitle 'Gists Graph'
     console.log 'code gists controller'
     @collection = new Gists params.login
     console.log @collection
@@ -33,6 +36,7 @@ module.exports = class CodeController extends Controller
     @collection.fetch()
 
 #   repos: (params) =>
+#     @adjustTitle 'Repos Graph'
 #     console.log 'code repos controller'
 #     @collection = new Repos login: 'reubano'
 #     console.log @collection

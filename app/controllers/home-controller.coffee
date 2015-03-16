@@ -5,6 +5,9 @@ mediator = require 'mediator'
 config = require 'config'
 
 module.exports = class HomeController extends Controller
+  initialize: =>
+    @adjustTitle 'Home'
+
   show: (params) =>
     console.log 'home controller'
     # Initialize new user with login from URL params.
