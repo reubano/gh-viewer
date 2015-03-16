@@ -5,14 +5,7 @@ utils = require 'lib/utils'
 module.exports = class Navbar extends Model
   defaults: ->
     utils.log 'setting Navbar defaults'
-    items: [
-      {
-        href: "/user/#{config.login}/activity"
-        title: 'Activity'
-        desc: 'View event activity'
-      }
-    ]
-
+    items: []
     main: {href: '/', title: 'GitView'}
 
   initialize: (login) ->
