@@ -7,6 +7,7 @@ ActivityView = require 'views/activity-view'
 # ContribView = require 'views/contrib-view'
 GistsView = require 'views/gists-view'
 # ReposView = require 'views/repos-view'
+utils = require 'lib/utils'
 
 module.exports = class CodeController extends Controller
   activity: (params) =>
