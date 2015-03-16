@@ -6,7 +6,7 @@ Common =
     durRows = []
     dur_val = 5
 
-    collection.each (model) ->
+    _(collection.first 10).each (model) ->
       created = model.get 'created_at'
       date = moment(created).format('MM-DD-YYYY')
       time = moment(created).format('HH:mm:ss').split(':')

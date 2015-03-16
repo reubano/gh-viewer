@@ -1,6 +1,7 @@
 CollectionView = require 'views/base/collection-view'
 template = require 'views/templates/gists'
 View = require 'views/gist-view'
+Common = require 'lib/common'
 mediator = require 'mediator'
 utils = require 'lib/utils'
 
@@ -20,3 +21,8 @@ module.exports = class GistsView extends CollectionView
   render: =>
     super
     utils.log 'rendering gists view'
+
+    @listenTo @collection, 'sync', ->
+      data = Common.convertData @collection
+      utils.log data
+      nv.addGraph utils.makeChart data, "#svg"
