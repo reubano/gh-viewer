@@ -15,6 +15,7 @@ module.exports = class FollowersView extends CollectionView
   initialize: (options) =>
     super
     utils.log 'initializing followers view'
+    @user = options.user
     mediator.setActive mediator.title
 
   render: (options) =>
@@ -25,3 +26,9 @@ module.exports = class FollowersView extends CollectionView
     #   mediator.markers = L.markerClusterGroup()
 
     # @listenTo @collection, 'sync', -> mediator.map.addLayer markers
+
+  getTemplateData: =>
+    utils.log 'get followers view template data'
+    templateData = super
+    templateData.user = @user
+    templateData

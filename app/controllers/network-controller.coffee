@@ -11,5 +11,5 @@ module.exports = class NetworkController extends Controller
   followers: (params) =>
     utils.log 'network controller'
     @collection = new Followers params.login
-    @view = new FollowersView {@collection}
+    @view = new FollowersView {@collection, user: params.login}
     @collection.fetch()
