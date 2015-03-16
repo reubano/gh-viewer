@@ -20,6 +20,7 @@
     "handlebars-brunch": ">= 1.0 < 1.8",
     "uglify-js-brunch": ">= 1.0 < 1.8",
     "clean-css-brunch": ">= 1.0 < 1.8",
+    "process-env-brunch": "~1.4.4-d",
     "auto-reload-brunch": ">= 1.0 < 1.8"
   },
   "devDependencies": {}

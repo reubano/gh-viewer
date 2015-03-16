@@ -3,8 +3,7 @@ debug_prod = false
 host = window?.location?.hostname ? require('os').hostname()
 dev = host in ['localhost', 'tokpro.local', 'tokpro']
 prod = not dev
-gh_api_token = 'cdac348c97dbdf5252d530103e0bfb2b9275d126'
-cm_api_key = '82e495a4e43045118b51a94617d211c0'
+cm_api_key = $PROCESS_ENV_CLOUD_MADE_API_KEY ? null
 
 if dev and not debug_prod
   console.log 'development envrionment set'
@@ -24,7 +23,8 @@ else
   age = 12 # in hours
 
 ua = navigator?.userAgent?.toLowerCase()
-mobile_device = (/iphone|ipod|ipad|android|blackberry|opera mini|opera mobi/).test ua
+list = 'iphone|ipod|ipad|android|blackberry|opera mini|opera mobi'
+mobile_device = (/"#{list}"/).test ua?.toLowerCase()
 force_mobile = (dev and debug_mobile)
 mobile = mobile_device or force_mobile
 
@@ -54,7 +54,8 @@ config =
     zoomLevel: 3
     setView: true
 
-  api_token: gh_api_token
+  api_token: $PROCESS_ENV_GITHUB_ACCOUNT_KEY ? null
+  api_base: 'https://api.github.com/users'
   cm_api_key: cm_api_key
   login: 'reubano'
   mode: mode
