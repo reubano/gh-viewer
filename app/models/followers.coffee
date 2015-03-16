@@ -1,7 +1,8 @@
+Collection = require 'models/base/collection'
 Model = require 'models/user'
 config = require 'config'
 
-module.exports = class Followers extends Chaplin.Collection
+module.exports = class Followers extends Collection
   model: Model
 
   initialize: (login) =>

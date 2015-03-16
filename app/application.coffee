@@ -1,4 +1,3 @@
-Navbar = require 'models/navbar'
 mediator = require 'mediator'
 
 # The application object.

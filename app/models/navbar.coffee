@@ -1,6 +1,7 @@
+Model = require 'models/base/model'
 config = require 'config'
 
-module.exports = class Navbar extends Chaplin.Model
+module.exports = class Navbar extends Model
   defaults: ->
     console.log 'setting Navbar defaults'
     items: [

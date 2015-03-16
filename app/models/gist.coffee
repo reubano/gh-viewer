@@ -1,4 +1,6 @@
-module.exports = class Gist extends Chaplin.Model
+Model = require 'models/base/model'
+
+module.exports = class Gist extends Model
   initialize: (options) ->
     super
     console.log "initialize gist model"

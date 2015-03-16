@@ -1,6 +1,7 @@
+Collection = require 'models/base/collection'
 config = require 'config'
 
-module.exports = class Activity extends Chaplin.Collection
+module.exports = class Activity extends Collection
   initialize: (login) =>
     super
     console.log "initialize activity collection for #{login}"
