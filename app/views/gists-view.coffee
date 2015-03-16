@@ -20,7 +20,6 @@ module.exports = class GistsView extends CollectionView
 
   render: =>
     super
-    utils.log 'rendering gists view'
 
     @listenTo @collection, 'sync', ->
       data = Common.convertData @collection

@@ -4,7 +4,6 @@ utils = require 'lib/utils'
 module.exports = class Gist extends Model
   initialize: (options) ->
     super
-    utils.log "initialize gist model"
     if @has 'id'
       files = @get 'files'
       func = (t, s) -> t + s
