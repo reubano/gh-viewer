@@ -22,6 +22,6 @@ module.exports = class GistView extends View
     else if @login then console.log "initializing gist view for #{@login}"
     else return
 
-  render: =>
+  render: ->
     super
     console.log "rendering gist view"

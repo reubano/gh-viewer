@@ -7,4 +7,5 @@ module.exports = class Followers extends Chaplin.Collection
   initialize: (login) =>
     super
     console.log "initialize followers collection for #{login}"
-    @url = -> "https://api.github.com/users/#{login}/followers?access_token=#{config.api_token}"
+    query = "access_token=#{config.api_token}"
+    @url = "#{config.api_base}/#{login}/followers?#{query}"

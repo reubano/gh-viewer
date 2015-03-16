@@ -25,7 +25,8 @@ module.exports = class View extends Chaplin.View
 
     L.Control.GeoSearch = L.Control.GeoSearch.extend
       _showLocation: (coordinates) ->
-        marker = L.marker([coordinates.Y, coordinates.X], {icon: icon}).addTo(map)
+        [x, y] = [coordinates.Y, coordinates.X]
+        marker = L.marker([x, y], {icon: icon}).addTo(map)
         marker.bindPopup "#{login}: #{location}"
         marker.on 'mouseover', (e) -> e.target.openPopup()
         marker.on 'mouseout', (e) -> e.target.closePopup()
@@ -33,13 +34,19 @@ module.exports = class View extends Chaplin.View
         mediator.publish 'geosearchLocated', coordinates
         map.fireEvent 'geosearch_showlocation', {Location: coordinates}
 
-    @subscribeEvent 'geosearchLocated', (loc) =>
+    @subscribeEvent 'geosearchLocated', (coordinates) =>
       console.log 'heard geosearchLocated'
-      map.setView([loc.Y, loc.X], options.zoomLevel, false) if not options.center
+      [x, y] = [coordinates.Y, coordinates.X]
+      map.setView([x, y], options.zoomLevel, false) if not options.center
 
     search = new L.Control.GeoSearch options
     search.addTo map
     google = options.srchProviderName.indexOf('google') is 0
-    if google and mediator.googleLoaded then search.geosearch location
-    else if google then @subscribeEvent 'googleLoaded', -> search.geosearch location
-    else search.geosearch location
+
+    if google and mediator.googleLoaded
+      search.geosearch location
+    else if google
+      @subscribeEvent 'googleLoaded', -> search.geosearch location
+    else
+      search.geosearch location
+

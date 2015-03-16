@@ -7,4 +7,4 @@ module.exports = class Gists extends Chaplin.Collection
   initialize: (login) =>
     super
     console.log "initialize gists collection for #{login}"
-    @url = -> "https://api.github.com/users/#{login}/gists?access_token=#{config.api_token}"
+    @url = "#{config.api_base}/#{login}/gists?access_token=#{config.api_token}"
