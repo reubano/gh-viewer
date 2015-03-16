@@ -7,6 +7,8 @@ module.exports = class Gist extends Model
     utils.log "initialize gist model"
     if @has 'id'
       files = @get 'files'
-      sum = _.pluck(files, 'size').reduce (t, s) -> t + s
+      func = (t, s) -> t + s
+      sum = _.pluck(files, 'size').reduce func, 0
       @set size_files: Math.round(sum / 102.4) / 10
       @set num_files: (k for k of files).length
+
