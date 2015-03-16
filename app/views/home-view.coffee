@@ -24,6 +24,4 @@ module.exports = class HomeView extends View
       @location = @model.get('location')
       @login = @model.get('login')
       options = {providerName: 'openstreetmap'}
-      if @location then @codeLocation L.map('map'), @location, @login, options
-#       else @model.set 'location', 'N/A'
-
+      @codeLocation(L.map('map'), @location, @login, options) if @location

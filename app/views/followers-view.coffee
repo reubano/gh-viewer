@@ -22,7 +22,6 @@ module.exports = class FollowersView extends CollectionView
     utils.log 'rendering followers view'
     @on 'addedToDOM', ->
       mediator.map = L.map 'map'
-      mediator.markers = L.markerClusterGroup()
+    #   mediator.markers = L.markerClusterGroup()
 
-    @listenTo @collection, 'sync', ->
-#       mediator.map.addLayer markers
+    # @listenTo @collection, 'sync', -> mediator.map.addLayer markers
