@@ -9,7 +9,7 @@ BUT should not have errors
 body {overflow-x: hidden !important;}
 
 .chart {
-  height: 550px;
+  height: 350px;
   margin-left: -11px;
   margin-right: -90px;
 }

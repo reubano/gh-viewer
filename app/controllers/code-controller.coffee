@@ -30,8 +30,8 @@ module.exports = class CodeController extends Controller
     @adjustTitle 'Gists Graph'
     utils.log 'code gists controller'
     @collection = new Gists params.login
-    @collection.comparator = (model) -> model.get 'created_at'
-    @view = new GistsView {collection: @collection}
+    @collection.comparator = (model) -> - model.get 'created_at'
+    @view = new GistsView {collection: @collection, user: params.login}
     @collection.fetch()
 
 #   repos: (params) =>

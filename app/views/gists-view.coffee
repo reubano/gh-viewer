@@ -1,6 +1,6 @@
 CollectionView = require 'views/base/collection-view'
 template = require 'views/templates/gists'
-View = require 'views/gist-view'
+View = require 'views/base/view'
 Common = require 'lib/common'
 mediator = require 'mediator'
 utils = require 'lib/utils'
@@ -8,7 +8,6 @@ utils = require 'lib/utils'
 module.exports = class GistsView extends CollectionView
   itemView: View
   autoRender: true
-  listSelector: '#gist-list'
   className: 'row'
   region: 'content'
   template: template
@@ -16,6 +15,7 @@ module.exports = class GistsView extends CollectionView
   initialize: (options) ->
     super
     utils.log 'initializing gists view'
+    @user = options.user
     mediator.setActive mediator.title
 
   render: =>
@@ -25,3 +25,9 @@ module.exports = class GistsView extends CollectionView
       data = Common.convertData @collection
       utils.log data
       nv.addGraph utils.makeChart data, "#svg"
+
+  getTemplateData: =>
+    utils.log 'get followers view template data'
+    templateData = super
+    templateData.user = @user
+    templateData
