@@ -11,8 +11,8 @@ module.exports = class Controller extends Chaplin.Controller
   beforeAction: (params, route) =>
     utils.log "controller beforeAction"
     login = params?.login ? config.login
-    @compose 'site', SiteView
-    @compose 'navbar', ->
+    @reuse 'site', SiteView
+    @reuse 'navbar', ->
       @model = new Navbar login
       mediator.title = @model.get('main').title
       @view = new NavbarView {@model}
