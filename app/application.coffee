@@ -21,5 +21,5 @@ module.exports = class Application extends Chaplin.Application
     mediator.markers = null
     mediator.doneSearching = null
     mediator.title = null
-    # Seal the mediator
+    mediator.seal()
     super
