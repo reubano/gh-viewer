@@ -45,10 +45,8 @@ module.exports = class View extends Chaplin.View
     search.addTo map
     google = options.srchProviderName.indexOf('google') is 0
 
-    if google and mediator.googleLoaded
+    if (google and mediator.googleLoaded) or not google
       search.geosearch location
-    else if google
-      @subscribeEvent 'googleLoaded', -> search.geosearch location
     else
-      search.geosearch location
+      @subscribeEvent 'googleLoaded', -> search.geosearch location
 
