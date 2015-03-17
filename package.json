@@ -10,9 +10,12 @@
   "type": "application",
   "keywords": ["application", "api-consumer", "github-api", "visualization", "mapping"],
   "repository": {"type": "git", "url": "http://github.com/reubano/gh-viewer"},
+  "engines": {
+    "node": "0.10.32"
+  },
   "scripts": {
     "start": "brunch watch --server",
-    "test": "brunch test"
+    "postinstall": "bower install && brunch build -P"
   },
   "dependencies": {
     "auto-reload-brunch": ">= 1.0 < 1.8",
