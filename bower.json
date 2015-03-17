@@ -12,7 +12,7 @@
     "minilog": "*",
     "moment": "~2.4.0",
     "nvd3": "~1.1.14-beta",
-    "leaflet-dist": "~0.7.0",
+    "leaflet-dist": "~0.7.2",
     "leaflet-providers": "~1.0.1",
     "Leaflet.awesome-markers": "~2.0.1",
     "L.GeoSearch": "git://github.com/smeijer/L.GeoSearch.git",
