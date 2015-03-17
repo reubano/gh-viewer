@@ -5,21 +5,21 @@ config = require 'config'
 utils = require 'lib/utils'
 
 module.exports = class PersonView extends View
-  autoRender: false
+  autoRender: true
   tagName: 'li'
   className: 'col-sm-12 col-md-6 gallery'
   template: template
 
   initialize: (options) =>
     super
-    @listenTo @model, 'change', @render
+    @listenTo @model, 'change:location', @render
     @id = @model.get('id')
     @location = @model.get('location')
     @login = @model.get('login')
     return if not (@id or @login)
 
     if not @location
-      # utils.log "#{@login} has no location"
+      utils.log "#{@login} has no location"
       @model.fetch()
 
   render: =>
@@ -28,7 +28,7 @@ module.exports = class PersonView extends View
     @login = @model.get 'login'
     @$("[data-toggle='tooltip']").tooltip()
     return if not (mediator.map and @location)
-    # utils.log "rendering #{@login} person view"
+    utils.log "rendering #{@login} person view"
 
     options =
       icon: 'user'
