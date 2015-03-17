@@ -27,8 +27,8 @@ module.exports = class View extends Chaplin.View
 
     L.Control.GeoSearch = L.Control.GeoSearch.extend
       _showLocation: (coordinates) ->
-        [x, y] = [coordinates.Y, coordinates.X]
-        marker = L.marker([x, y], {icon: icon}).addTo(map)
+        [y, x] = [coordinates.Y, coordinates.X]
+        marker = L.marker([y, x], {icon: icon}).addTo(map)
         marker.bindPopup "#{login}: #{location}"
         marker.on 'mouseover', (e) -> e.target.openPopup()
         marker.on 'mouseout', (e) -> e.target.closePopup()
@@ -38,8 +38,8 @@ module.exports = class View extends Chaplin.View
 
     @subscribeEvent 'geosearchLocated', (coordinates) ->
       # utils.log 'heard geosearchLocated'
-      [x, y] = [coordinates.Y, coordinates.X]
-      map.setView([x, y], options.zoomLevel, false) if not options.center
+      [y, x] = [coordinates.Y, coordinates.X]
+      map.setView([y, x], options.zoomLevel, false) if not options.center
 
     search = new L.Control.GeoSearch options
     search.addTo map
