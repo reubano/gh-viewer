@@ -30,7 +30,7 @@
     "leaflet-dist": {
       "name": "leaflet-dist",
       "dependencies": {},
-      "main": ["leaflet.js", "leaflet.css"]
+      "main": ["leaflet-src.js", "leaflet.css"]
     },
     "L.GeoSearch": {
       "dependencies": {"leaflet-dist": "*"},
