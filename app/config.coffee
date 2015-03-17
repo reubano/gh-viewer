@@ -34,9 +34,9 @@ console.log "debug production: #{debug_prod}"
 
 config =
   srchProviders:
-    google: L.GeoSearch.Provider.Google
-    openstreetmap: L.GeoSearch.Provider.OpenStreetMap
-    esri: L.GeoSearch.Provider.Esri
+    google: L?.GeoSearch?.Provider?.Google
+    openstreetmap: L?.GeoSearch?.Provider?.OpenStreetMap
+    esri: L?.GeoSearch?.Provider?.Esri
 
   tileProviders:
     1: 'MapBox.reubano.ghdp3e73'
