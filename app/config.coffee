@@ -4,6 +4,7 @@ host = window?.location?.hostname ? require('os').hostname()
 dev = host in ['localhost', 'tokpro.local', 'tokpro']
 prod = not dev
 cm_api_key = $PROCESS_ENV_CLOUD_MADE_API_KEY ? null
+gh_api_key = $PROCESS_ENV_GITHUB_ACCOUNT_KEY ? null
 
 if dev and not debug_prod
   console.log 'development envrionment set'
@@ -54,7 +55,7 @@ config =
     zoomLevel: 3
     setView: true
 
-  api_token: $PROCESS_ENV_GITHUB_ACCOUNT_KEY ? null
+  api_token: gh_api_key
   api_base: 'https://api.github.com/users'
   cm_api_key: cm_api_key
   login: 'reubano'
