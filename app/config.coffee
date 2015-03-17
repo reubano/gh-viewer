@@ -9,17 +9,11 @@ gh_api_key = $PROCESS_ENV_GITHUB_ACCOUNT_KEY ? null
 if dev and not debug_prod
   console.log 'development envrionment set'
   mode = 'development'
-  api_fetch = "/api/fetch"
-  api_render = "/api/render"
-  api_uploads = "/api/uploads"
   api_logs = "http://localhost:8888/api/logs"
   age = 72 # in hours
 else
   console.log 'production envrionment set'
   mode = 'production'
-  api_fetch = 'http://ongeza.herokuapp.com/api/fetch'
-  api_render = 'http://ongeza.herokuapp.com/api/render'
-  api_uploads = 'http://ongeza.herokuapp.com/api/uploads'
   api_logs = 'http://flogger.herokuapp.com/api/logs'
   age = 12 # in hours
 
@@ -63,9 +57,6 @@ config =
   prod: prod
   debug_prod: debug_prod
   dev: dev
-  api_fetch: api_fetch
-  api_render: api_render
-  api_uploads: api_uploads
   api_logs: api_logs
   mobile: mobile
   max_age: age
