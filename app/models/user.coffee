@@ -8,7 +8,7 @@ module.exports = class User extends Model
     super
     @login = @get('login') ? options?.login
     # utils.log "initializing #{@login} user model"
-    @url = "#{config.api_base}/#{@login}?access_token=#{config.api_token}"
+    @url = "#{config.api_base}/#{@login}?#{@query}"
 
     L.Control.GeoSearch =
       L.Control.GeoSearch.extend

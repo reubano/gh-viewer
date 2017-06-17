@@ -7,5 +7,4 @@ module.exports = class Activity extends Collection
 
   initialize: (options) =>
     super
-    query = "access_token=#{config.api_token}"
-    @url = "#{config.api_base}/#{@user}/followers?#{query}"
+    @url = "#{config.api_base}/#{@user}/followers?#{@query}"

@@ -11,7 +11,7 @@ module.exports = class Collection extends Chaplin.Collection
   file: devconfig.storage.file
   local: devconfig.storage.local
   remote: devconfig.storage.remote
-  query: "access_token=#{config.api_token}"
+  query: if config.api_token then "access_token=#{config.api_token}" else ''
 
   initialize: (options) ->
     super
