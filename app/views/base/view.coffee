@@ -15,7 +15,7 @@ module.exports = class View extends Chaplin.View
     if mediator.markers?.clearLayers?
       mediator.markers.clearLayers()
 
-    mediator.markers = new L.LayerGroup().addTo map
+    map.addLayer mediator.markers
 
   setMap: =>
     console.log 'setMap'
