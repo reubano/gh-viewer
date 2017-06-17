@@ -5,8 +5,8 @@ utils = require 'lib/utils'
 
 module.exports = class Gists extends Collection
   model: Model
+  type: 'gists'
 
-  initialize: (login) =>
+  initialize: (options) =>
     super
-    utils.log "initialize gists collection for #{login}"
-    @url = "#{config.api_base}/#{login}/gists?access_token=#{config.api_token}"
+    @url = "#{config.api_base}/#{@user}/gists?#{@query}"

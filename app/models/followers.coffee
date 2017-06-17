@@ -5,9 +5,8 @@ utils = require 'lib/utils'
 
 module.exports = class Followers extends Collection
   model: Model
+  type: 'followers'
 
-  initialize: (login) =>
+  initialize: (options) =>
     super
-    utils.log "initialize followers collection for #{login}"
-    query = "access_token=#{config.api_token}"
-    @url = "#{config.api_base}/#{login}/followers?#{query}"
+    @url = "#{config.api_base}/#{@user}/followers?#{@query}"

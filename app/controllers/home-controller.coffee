@@ -2,7 +2,6 @@ Controller = require 'controllers/base/controller'
 Model = require 'models/user'
 View = require 'views/home-view'
 mediator = require 'mediator'
-config = require 'config'
 utils = require 'lib/utils'
 
 module.exports = class HomeController extends Controller
@@ -12,8 +11,6 @@ module.exports = class HomeController extends Controller
 
   show: (params) =>
     utils.log 'home controller'
-    # Initialize new user with login from URL params.
-    login = params?.login ? config.login
-    @model = new Model login: login
+    @model = new Model {@login}
     @view = new View {@model}
     @model.fetch()

@@ -16,15 +16,17 @@ module.exports = class GistsView extends CollectionView
     super
     utils.log 'initializing gists view'
     @user = options.user
+
+    @listenTo @collection, 'sync', =>
+      console.log 'heard gist sync'
+      data = Common.convertData @collection
+      utils.log data
+      nv.addGraph utils.makeChart data, "#svg"
+
     mediator.setActive mediator.title
 
   render: =>
     super
-
-    @listenTo @collection, 'sync', ->
-      data = Common.convertData @collection
-      utils.log data
-      nv.addGraph utils.makeChart data, "#svg"
 
   getTemplateData: =>
     utils.log 'get followers view template data'

@@ -12,16 +12,12 @@ module.exports = class HomeView extends View
 
   initialize: (options) =>
     super
-    @listenTo @model, 'change', @render
+    @listenTo @model, 'sync', @render
+    @listenTo @model, 'change', @addToMap
+    @on 'addedToDOM', @setMap
     utils.log 'initializing home view'
     mediator.setActive mediator.title
 
   render: =>
     super
     utils.log 'rendering home view'
-    @on 'addedToDOM', ->
-      @$("[data-toggle='tooltip']").tooltip()
-      @location = @model.get('location')
-      @login = @model.get('login')
-      options = {providerName: 'openstreetmap'}
-      @codeLocation(L.map('map'), @location, @login, options) if @location

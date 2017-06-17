@@ -8,6 +8,6 @@ module.exports = class Navbar extends Model
     items: []
     main: {href: '/', title: 'GitView'}
 
-  initialize: (login) ->
+  initialize: ->
     super
     utils.log 'initializing navbar model'

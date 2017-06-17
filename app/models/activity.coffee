@@ -3,8 +3,9 @@ config = require 'config'
 utils = require 'lib/utils'
 
 module.exports = class Activity extends Collection
-  initialize: (login) =>
+  type: 'activity'
+
+  initialize: (options) =>
     super
-    utils.log "initialize activity collection for #{login}"
     query = "access_token=#{config.api_token}"
-    @url = "#{config.api_base}/#{login}/followers?#{query}"
+    @url = "#{config.api_base}/#{@user}/followers?#{query}"

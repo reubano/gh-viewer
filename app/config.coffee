@@ -4,7 +4,7 @@ host = window?.location?.hostname ? require('os').hostname()
 dev = host in ['localhost', 'tokpro.local', 'tokpro']
 prod = not dev
 cm_api_key = $PROCESS_ENV_CLOUD_MADE_API_KEY ? null
-gh_api_key = $PROCESS_ENV_GITHUB_ACCOUNT_KEY ? null
+gh_api_key = $PROCESS_ENV_GITHUB_TOKEN_TH ? null
 
 if dev and not debug_prod
   console.log 'development envrionment set'
@@ -29,9 +29,9 @@ console.log "debug production: #{debug_prod}"
 
 config =
   srchProviders:
-    google: L?.GeoSearch?.Provider?.Google
-    openstreetmap: L?.GeoSearch?.Provider?.OpenStreetMap
-    esri: L?.GeoSearch?.Provider?.Esri
+    google: 'Google'
+    openstreetmap: 'OpenStreetMap'
+    esri: 'Esri'
 
   tileProviders:
     1: 'MapBox.reubano.ghdp3e73'
@@ -40,13 +40,12 @@ config =
     4: 'CloudMade'
 
   options:
-    icon: 'home'
-    markerColor: 'green'
-    markers: false
+    icon: 'user'
     tileProvider: 3
     tpOptions: {maxZoom: 5, apiKey: cm_api_key, styleID: 1}
     srchProviderName: 'openstreetmap'
-    zoomLevel: 3
+    zoomLevel: 2
+    center: [20, 20]
     setView: true
 
   api_token: gh_api_key

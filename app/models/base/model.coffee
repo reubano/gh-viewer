@@ -1,9 +1,8 @@
-# Base model.
+utils = require 'lib/utils'
+
 module.exports = class Model extends Chaplin.Model
-  # Mixin a synchronization state machine.
-  # _(@prototype).extend Chaplin.SyncMachine
-  # initialize: ->
-  #   super
-  #   @on 'request', @beginSync
-  #   @on 'sync', @finishSync
-  #   @on 'error', @unsync
+  # _.extend @prototype, Chaplin.SyncMachine
+
+  display: =>
+    utils.log @, false
+    utils.log @getAttributes(), false

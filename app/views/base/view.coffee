@@ -11,42 +11,54 @@ module.exports = class View extends Chaplin.View
   getTemplateFunction: ->
     @template
 
-  codeLocation: (map, location, login, tmp=false) =>
-    options = {}
-    _.extend options, config.options
-    _.extend options, tmp
-    options.provider = new config.srchProviders[options.srchProviderName]()
-    return unless location?
+  addMarkers: (map) ->
+    if mediator.markers?.clearLayers?
+      mediator.markers.clearLayers()
 
-    # utils.log "coding location: #{location} with #{options.srchProviderName}"
-    markers = options.markers
-    icon = L.AwesomeMarkers.icon options
+    mediator.markers = new L.LayerGroup().addTo map
+
+  setMap: =>
+    console.log 'setMap'
+    options = config.options
     tileProvider = config.tileProviders[options.tileProvider]
-    L.tileLayer.provider(tileProvider, options.tpOptions).addTo(map)
-    map.setView(options.center, options.zoomLevel, false) if options.center
+    L.Icon.Default.imagePath = '/images'
+    mediator.tiles = L.tileLayer.provider tileProvider, options.tpOptions
 
-    L.Control.GeoSearch = L.Control.GeoSearch.extend
-      _showLocation: (coordinates) ->
-        [y, x] = [coordinates.Y, coordinates.X]
-        marker = L.marker([y, x], {icon: icon}).addTo(map)
-        marker.bindPopup "#{login}: #{location}"
-        marker.on 'mouseover', (e) -> e.target.openPopup()
-        marker.on 'mouseout', (e) -> e.target.closePopup()
-        markers.addLayer(marker) if markers
-        mediator.publish 'geosearchLocated', coordinates
-        map.fireEvent 'geosearch_showlocation', {Location: coordinates}
+    map = mediator.map = L.map 'map'
+    map.addLayer mediator.tiles
+    map.setView options.center, options.zoomLevel, false
+    @addMarkers map
+    mediator.publish 'mapSet'
+    console.log mediator.map?
 
-    @subscribeEvent 'geosearchLocated', (coordinates) ->
-      # utils.log 'heard geosearchLocated'
-      [y, x] = [coordinates.Y, coordinates.X]
-      map.setView([y, x], options.zoomLevel, false) if not options.center
+  addCoords: (coordinates, pan) =>
+    map = mediator.map
+    location = @model.get 'location'
+    login = @model.get 'login'
+    console.log "addCoords #{login}: #{location}"
 
-    search = new L.Control.GeoSearch options
-    search.addTo map
-    google = options.srchProviderName.indexOf('google') is 0
+    [x, y] = [coordinates.X, coordinates.Y]
+    [AwesomeMarker, markers] = [mediator.AwesomeMarker, mediator.markers]
+    marker = L.marker([y, x], {icon: AwesomeMarker}).addTo markers
+    marker.bindPopup "#{login}: #{location}"
+    marker.on 'mouseover', (e) -> e.target.openPopup()
+    marker.on 'mouseout', (e) -> e.target.closePopup()
 
-    if (google and mediator.googleLoaded) or not google
-      search.geosearch location
+    if pan
+      map.setView [y, x], map._zoom, animation: true
+
+    map.fireEvent 'geosearch_showlocation', {Location: coordinates}
+
+  addToMap: (options) =>
+    @$("[data-toggle='tooltip']").tooltip()
+    location = @model.get 'location'
+    coordinates = @model.get 'coordinates'
+
+    if mediator.map and coordinates
+      @addCoords coordinates, options?.pan
+    else if coordinates
+      @subscribeEvent 'mapSet', =>
+        @addCoords coordinates, options?.pan
+        mediator.unsubscribe 'mapSet'
     else
-      @subscribeEvent 'googleLoaded', -> search.geosearch location
-
+      @model.fetchData()
