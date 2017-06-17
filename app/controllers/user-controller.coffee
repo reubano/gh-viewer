@@ -3,7 +3,6 @@ User = require 'models/user'
 View = require 'views/user-view'
 
 module.exports = class UserController extends Controller
-
   show: (params) ->
     console.log 'user controller'
     # Initialize new User with login from URL params.

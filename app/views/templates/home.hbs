@@ -1,10 +1,24 @@
-<h1 class="text-info">Chose an activity below.</h1>
+<div class="col-sm-3">
+  <img class="img-thumbnail" src="{{avatar_url}}" width="200" height="200" alt="">
 
-{{#each items}}
-<hr>
-<div class="row">
-  <a href="{{href}}">
-    <button class="btn btn-primary btn-large" type="button">{{desc}}</button>
-  </a>
+  <h3>{{name}}</h3>
+
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active">
+      <a href="/gists">
+        Gists <span class="badge pull-right">{{public_gists}}</span>
+      </a>
+    </li>
+    <li class="active">
+      <a href="/followers">
+        Followers <span class="badge pull-right">{{followers}}</span>
+      </a>
+    </li>
+    <li class="active">
+      <a href="/following">
+        Following <span class="badge pull-right">{{following}}</span>
+      </a>
+    </li>
+  </ul>
 </div>
-{{/each}}
+<div class="col-sm-9" id="col9"><div id="map"></div></div>
