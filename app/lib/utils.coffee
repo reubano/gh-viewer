@@ -1,5 +1,4 @@
 config = require 'config'
-Chaplin = require 'chaplin'
 mediator = require 'mediator'
 
 # Application-specific utilities

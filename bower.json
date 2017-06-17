@@ -3,51 +3,45 @@
   "version": "0.0.1",
   "main": "public/javascripts/app.js",
   "dependencies": {
-    "chaplin": "~1.0.0",
-    "console-polyfill": "~0.1.0",
+    "chaplin": "~1.1.0",
+    "underscore": "~1.8.3",
     "lodash": "~2.0.0",
     "jquery": "~2.0.2",
     "h5bp-helpers": "~0.1.0",
     "bootstrap": "~3.0.3",
-    "minilog": "*",
-    "moment": "~2.4.0",
-    "nvd3": "~1.1.14-beta",
-    "leaflet-dist": "~0.7.2",
-    "leaflet-providers": "~1.0.1",
-    "Leaflet.awesome-markers": "~2.0.1",
-    "L.GeoSearch": "git://github.com/smeijer/L.GeoSearch.git",
-    "Leaflet.markercluster": "git://github.com/Leaflet/Leaflet.markercluster"
+    "minilog": "^3.1.0",
+    "moment": "^2.18.1",
+    "nvd3": "1.1.15-beta",
+    "leaflet": "^1.0.3",
+    "leaflet-providers": "^1.1.15",
+    "Leaflet.awesome-markers": "^2.0.2",
+    "leaflet-geosearch": "^1.1.0",
+    "leaflet.markercluster": "^1.0.5"
   },
   "overrides": {
     "backbone": {
-      "dependencies": {"lodash": "*", "jquery": "*"},
+      "dependencies": {
+        "underscore"  : ">=1.8.3",
+        "jquery": "~2.1.3"
+      },
       "main": "backbone.js"
     },
-    "nvd3": {
-      "dependencies": {"d3": "3.3.5"},
-      "main": ["nv.d3.js", "nv.d3.css"]
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
     },
-    "leaflet-dist": {
-      "name": "leaflet-dist",
-      "dependencies": {},
-      "main": ["leaflet-src.js", "leaflet.css"]
-    },
-    "L.GeoSearch": {
-      "dependencies": {"leaflet-dist": "*"},
+    "leaflet-geosearch": {
+      "dependencies": {
+        "leaflet": "^1.0.3"
+      },
       "main": [
         "src/js/l.control.geosearch.js",
         "src/js/l.geosearch.provider.google.js",
         "src/js/l.geosearch.provider.openstreetmap.js",
         "src/js/l.geosearch.provider.esri.js",
         "src/css/l.geosearch.css"
-      ]
-    },
-    "Leaflet.markercluster": {
-      "dependencies": {"leaflet-dist": "*"},
-      "main": [
-        "dist/leaflet.markercluster-src.js",
-        "dist/MarkerCluster.css",
-        "dist/MarkerCluster.Default.css"
       ]
     }
   }
