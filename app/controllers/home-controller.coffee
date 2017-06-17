@@ -1,16 +1,16 @@
 Controller = require 'controllers/base/controller'
-User = require 'models/user'
+Model = require 'models/user'
 View = require 'views/home-view'
+mediator = require 'mediator'
+utils = require 'lib/utils'
 
 module.exports = class HomeController extends Controller
-  index: ->
-    # Initialize new User with login from URL params.
-    @model = new User login: 'reubano'
-    @view = new View {@model}
-    @model.fetch()
+  initialize: =>
+    @adjustTitle 'Home'
+    utils.log 'initialize home-controller'
 
-  show: (params) ->
-    # Initialize new User with login from URL params.
-    @model = new User login: params.login
+  show: (params) =>
+    utils.log 'home controller'
+    @model = new Model {@login}
     @view = new View {@model}
     @model.fetch()

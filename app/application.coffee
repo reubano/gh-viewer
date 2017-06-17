@@ -1,16 +1,23 @@
 mediator = require 'mediator'
+Navbar = require 'models/navbar'
+config = require 'config'
+utils = require 'lib/utils'
 
-# The application object.
 module.exports = class Application extends Chaplin.Application
-  # start: ->
-  #   # You can fetch some data here and start app
-  #   # (by calling `super`) after that.
-  #   super
+  title: 'GitView'
 
-  # Create additional mediator properties.
   initMediator: ->
-    # Add additional application-specific properties and methods
-    console.log 'init app'
+    utils.log 'initializing mediator'
+    mediator.navbar = new Navbar()
+    mediator.tiles = null
+    mediator.synced = {}
     mediator.active = null
-    # Seal the mediator
+    mediator.user = null
+    mediator.googleLoaded = null
+    mediator.map = null
+    mediator.markers = L.markerClusterGroup config.options
+    mediator.AwesomeMarker = L.AwesomeMarkers.icon config.options
+    mediator.doneSearching = null
+    mediator.title = null
+    mediator.seal()
     super

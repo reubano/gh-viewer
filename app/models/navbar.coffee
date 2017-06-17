@@ -1,15 +1,13 @@
 Model = require 'models/base/model'
+config = require 'config'
 utils = require 'lib/utils'
 
 module.exports = class Navbar extends Model
-  defaults:
-    items: [
-      {href: '/activity', title: 'Activity', desc: 'View commit activity'},
-      {href: '/contribution', title: 'Contribution', desc: 'View contribution'},
-      {href: '/repos', title: 'Repos', desc: 'View public repos'},
-    ]
-
+  defaults: ->
+    utils.log 'setting Navbar defaults'
+    items: []
     main: {href: '/', title: 'GitView'}
 
   initialize: ->
     super
+    utils.log 'initializing navbar model'

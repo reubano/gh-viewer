@@ -1,23 +1,22 @@
 View = require 'views/base/view'
-template = require 'views/templates/home'
+template = require 'views/templates/person'
 mediator = require 'mediator'
 config = require 'config'
 utils = require 'lib/utils'
 
-module.exports = class HomeView extends View
+module.exports = class PersonView extends View
   autoRender: false
-  className: 'row'
-  region: 'content'
+  tagName: 'li'
+  className: 'col-sm-12 col-md-6 gallery'
   template: template
 
   initialize: (options) =>
     super
     @listenTo @model, 'sync', @render
     @listenTo @model, 'change', @addToMap
-    @on 'addedToDOM', @setMap
-    utils.log 'initializing home view'
-    mediator.setActive mediator.title
+    utils.log "initialize person-view: #{@model.get 'login'}"
+    @model.fetchData()
 
   render: =>
     super
-    utils.log 'rendering home view'
+    utils.log "render person-view: #{@model.get 'login'}"

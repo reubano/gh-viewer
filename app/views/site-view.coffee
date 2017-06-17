@@ -1,5 +1,6 @@
 View = require 'views/base/view'
 template = require 'views/templates/site'
+utils = require 'lib/utils'
 
 # Site view is a top-level view which is bound to body.
 module.exports = class SiteView extends View
@@ -9,3 +10,11 @@ module.exports = class SiteView extends View
     navbar: '#navbar'
     content: '#content'
   template: template
+
+  initialize: (options) =>
+    super
+    utils.log 'initializing site view'
+
+  render: =>
+    super
+    utils.log 'rendering site view'

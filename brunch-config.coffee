@@ -1,5 +1,8 @@
 exports.config =
-  # See http://brunch.io/#documentation for docs.
+  # See https://brunch.io/docs/config for docs.
+  watcher: usePolling: true
+  notifications: false
+
   plugins:
     coffeelint:
       pattern: /^app\/.*\.coffee$/
@@ -19,3 +22,10 @@ exports.config =
 
     templates:
       joinTo: 'javascripts/app.js'
+
+  npm:
+    globals:
+      _cp: 'console-polyfill'
+
+    styles:
+      'normalize.css': ['normalize.css']
