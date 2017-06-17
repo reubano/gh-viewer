@@ -31,7 +31,7 @@ module.exports = class View extends Chaplin.View
     mediator.publish 'mapSet'
     console.log mediator.map?
 
-  addCoords: (coordinates, pan) =>
+  addCoords: (coordinates, options) =>
     map = mediator.map
     location = @model.get 'location'
     login = @model.get 'login'
@@ -44,8 +44,9 @@ module.exports = class View extends Chaplin.View
     marker.on 'mouseover', (e) -> e.target.openPopup()
     marker.on 'mouseout', (e) -> e.target.closePopup()
 
-    if pan
-      map.setView [y, x], map._zoom, animation: true
+    if options?.pan
+      zoom = options?.zoom or map._zoom
+      map.setView [y, x], zoom, animation: true
 
     map.fireEvent 'geosearch_showlocation', {Location: coordinates}
 
@@ -55,10 +56,10 @@ module.exports = class View extends Chaplin.View
     coordinates = @model.get 'coordinates'
 
     if mediator.map and coordinates
-      @addCoords coordinates, options?.pan
+      @addCoords coordinates, options
     else if coordinates
       @subscribeEvent 'mapSet', =>
-        @addCoords coordinates, options?.pan
+        @addCoords coordinates, options
         mediator.unsubscribe 'mapSet'
     else
       @model.fetchData()

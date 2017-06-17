@@ -13,7 +13,7 @@ module.exports = class HomeView extends View
   initialize: (options) =>
     super
     @listenTo @model, 'sync', @render
-    @listenTo @model, 'change', @addToMap
+    @listenTo @model, 'change', => @addToMap pan: true, zoom: 3
     @on 'addedToDOM', @setMap
     utils.log 'initializing home view'
     mediator.setActive mediator.title
